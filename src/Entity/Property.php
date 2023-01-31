@@ -11,9 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Property
 {
     const HEAT = [
-        0 => 'electric',
-        1 => 'gaz',
-        2 => 'petrol'
+        0 => 'Electrique',
+        1 => 'Gaz',
     ];
 
     public function __construct()
