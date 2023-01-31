@@ -15,10 +15,7 @@ class PropertyController extends AbstractController
     {
     }
 
-    /**
-     * @Route("/biens", name="property.index")
-     * @return Response
-     */
+    #[Route('/biens', 'property.index')]
     public function index(): Response
     {
         $properties = $this->propertyRepository->findAllNotSold();
@@ -27,9 +24,7 @@ class PropertyController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/biens/{slug}-{id}", name="property.show", requirements={"slug": "[a-z0-9\-]*"})
-     */
+    #[Route('/biens/{slug}-{id}', 'property.show', ['slug' => '[a-z0-9\-]*'])]
     public function show(Property $property, string $slug): Response
     {
         if ($property->getSlug() != $slug) {

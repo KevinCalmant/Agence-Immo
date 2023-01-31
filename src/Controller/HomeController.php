@@ -12,15 +12,7 @@ class HomeController extends AbstractController {
     {
     }
 
-    /**
-     * @Route("/", name="home")
-     * @param PropertyRepository $propertyRepository
-     * @return Response
-     *
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
+    #[Route('/', 'home')]
     public function index(): Response
     {
         $properties = $this->propertyRepository->findLatest();

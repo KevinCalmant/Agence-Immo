@@ -27,11 +27,7 @@ class AdminPropertyController extends AbstractController
         return $this->render('admin/property/index.html.twig', compact('properties'));
     }
 
-    /**
-     * @Route("/admin/property/create", name="admin.property.new")
-     * @param Request $request
-     * @return Response
-     */
+    #[Route('/admin/property/create', name: 'admin.property.new')]
     public function new(Request $request): Response {
         $property = new Property();
         $form = $this->createForm(PropertyType::class, $property);
@@ -48,12 +44,7 @@ class AdminPropertyController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/admin/property/{id}", name="admin.property.edit", methods="GET|POST"})
-     * @param Property $property
-     * @param Request $request
-     * @return Response
-     */
+    #[Route('/admin/property/{id}', name: 'admin.property.edit', methods: "GET|POST")]
     public function edit(Property $property, Request $request): Response
     {
         $form = $this->createForm(PropertyType::class, $property);
@@ -69,12 +60,7 @@ class AdminPropertyController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/admin/property/{id}", name="admin.property.delete", methods="DELETE"})
-     * @param Property $property
-     * @param Request $request
-     * @return Response
-     */
+    #[Route('/admin/property/{id}', name: 'admin.property.delete', methods: 'DELETE')]
     public function delete(Property $property, Request $request): Response {
         if ($this->isCsrfTokenValid('delete' . $property->getId(), $request->get('_token'))) {
             $this->objectManager->remove($property);
